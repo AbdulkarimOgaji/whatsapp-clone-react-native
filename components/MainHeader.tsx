@@ -3,7 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
+  TouchableHighlight as TH,
   TouchableOpacity as T,
 } from "react-native";
 import { NavigationProp, getPathFromState } from "@react-navigation/native";
@@ -11,16 +11,15 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 const MainHeader = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const currentPath = getPathFromState(navigation.getState());
-  const showBack = ["/ChatDetails"];
+  const hideHeader = ["/ChatDetails"];
   const goBack = () => {
     navigation.goBack();
   };
+  const shouldHide = hideHeader.includes(currentPath)
   return (
-    <View style={styles.container}>
-      {showBack.includes(currentPath) ? (
-        <Button title="Back" onPress={goBack} />
-      ) : (
-        <>
+    <View style={shouldHide ? {height: 0} : styles.container}>
+      { !shouldHide &&
+        (<>
           <Text style={styles.headerText}>WhatsDown</Text>
           <View style={{flexDirection: 'row', marginTop: 20}}>
             <T>
@@ -30,8 +29,7 @@ const MainHeader = ({ navigation }: { navigation: NavigationProp<any> }) => {
               <MaterialIcons name="more-vert" color="#eee" size={28} />
             </T>
           </View>
-        </>
-      )}
+        </>)}
     </View>
   );
 };
