@@ -9,7 +9,7 @@ import {
 import { NavigationProp, getPathFromState } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 
-export const Header = ({ navigation }: { navigation: NavigationProp<any> }) => {
+const MainHeader = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const currentPath = getPathFromState(navigation.getState());
   const showBack = ["/ChatDetails"];
   const goBack = () => {
@@ -35,6 +35,7 @@ export const Header = ({ navigation }: { navigation: NavigationProp<any> }) => {
     </View>
   );
 };
+export default MainHeader;
 
 const styles = StyleSheet.create({
   container: {

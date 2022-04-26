@@ -7,14 +7,14 @@ import {
   TouchableOpacity as T,
 } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../routes/homeStack";
+import { ChatType } from '../screens/Chats'
 
 type Props = {
-  chatData: ChatData;
-  navigation: StackNavigationProp<RootStackParamList, any, any>;
+  chatData: ChatType;
+  navigation: StackNavigationProp<any, any, any>;
 };
 
-const Chat = ({ chatData, navigation }: Props) => {
+const SingleChat = ({ chatData, navigation }: Props) => {
   const goToChatDetails = () => {
     navigation.navigate("ChatDetails", {});
   };
@@ -35,17 +35,7 @@ const Chat = ({ chatData, navigation }: Props) => {
   );
 };
 
-type ChatData = {
-  key: number;
-  type: string;
-  chatName: string;
-  chatImage: any;
-  lastMessage: {
-    text: string;
-    sender: string;
-    sendTime: string;
-  };
-};
+
 
 const styles = StyleSheet.create({
   chat: {
@@ -75,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Chat, ChatData}
+export default SingleChat;

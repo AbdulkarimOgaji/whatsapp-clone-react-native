@@ -1,8 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import ChatTabs from "./ChatsTab";
-import { Header } from "../components/Header";
+import HomeTabs from "./HomeTabs";
+import MainHeader from "../components/MainHeader";
 import ChatDetails from "../screens/ChatDetails";
 
 export type RootStackParamList = {
@@ -17,12 +17,12 @@ const RootStack = () => {
       <Stack.Navigator
         initialRouteName="ChatTabs"
         screenOptions={{
-          header: ({ route, navigation }) => (
-            <Header navigation={navigation} />
+          header: ({ navigation }) => (
+            <MainHeader navigation={navigation} />
           ),
         }}
       >
-        <Stack.Screen name="ChatTabs" component={ChatTabs} />
+        <Stack.Screen name="ChatTabs" component={HomeTabs} />
         <Stack.Screen name="ChatDetails" component={ChatDetails} />
       </Stack.Navigator>
     </NavigationContainer>

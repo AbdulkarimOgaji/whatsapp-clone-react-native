@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import { View, FlatList } from "react-native"
 import { globalStyle } from '../styles/global';
-import {Call, CallData} from './Call'
+
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParamList } from "../routes/HomeStack"
+import { SingleCall } from '../components/SingleCall';
 
 type Props = StackScreenProps<RootStackParamList, "Chats">;
+
+export type CallType =  {
+  key: number;
+  status: string;
+  type: string;
+  caller: string;
+  callerImage: any;
+  time: string;
+};
 
 export default function Calls({navigation, route}: Props) {
 
@@ -91,13 +101,13 @@ export default function Calls({navigation, route}: Props) {
       time: "(2) 12 April, 21:10" 
     },
   ]
-  const [calls, setCalls] = useState<CallData[] | null>(demoCalls)
+  const [calls, setCalls] = useState<CallType[] | null>(demoCalls)
   return (
     <View style={globalStyle.container}>
       <FlatList
       scrollEnabled
       data={calls}
-      renderItem={({ item }) => <Call navigation={navigation} callData={item} />}
+      renderItem={({ item }) => <SingleCall navigation={navigation} callData={item} />}
       />
     </View>
   );

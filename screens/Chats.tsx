@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { View, FlatList } from "react-native"
 import { globalStyle } from '../styles/global';
-import {Chat, ChatData} from './Chat'
 import { StackScreenProps } from "@react-navigation/stack";
-import { RootStackParamList } from "../routes/HomeStack"
+import SingleChat from '../components/SingleChat';
 
-type Props = StackScreenProps<RootStackParamList, "Chats">;
+type Props = StackScreenProps<any, any>;
+
+export type ChatType = {
+  key: number;
+  type: string;
+  chatName: string;
+  chatImage: any;
+  lastMessage: {
+    text: string;
+    sender: string;
+    sendTime: string;
+  };
+};
 
 export default function Chats({navigation, route}: Props) {
 
@@ -121,13 +132,13 @@ export default function Chats({navigation, route}: Props) {
       }  
     },
   ]
-  const [chats, setChats] = useState<ChatData[] | null>(demoChats)
+  const [chats, setChats] = useState<ChatType[] | null>(demoChats)
   return (
     <View style={globalStyle.container}>
       <FlatList
       scrollEnabled
       data={chats}
-      renderItem={({ item }) => <Chat navigation={navigation} chatData={item} />}
+      renderItem={({ item }) => <SingleChat navigation={navigation} chatData={item} />}
       />
     </View>
   );

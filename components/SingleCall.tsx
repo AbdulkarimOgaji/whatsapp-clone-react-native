@@ -6,21 +6,22 @@ import {
   Image,
   TouchableOpacity as T,
 } from "react-native";
-import { globalStyle } from "../styles/global";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../routes/homeStack";
 import { MaterialIcons } from "@expo/vector-icons";
+import { CallType } from "../screens/Calls";
 
 type Props = {
-  callData: CallData;
-  navigation: StackNavigationProp<RootStackParamList, any, any>;
+  callData: CallType;
+  navigation: StackNavigationProp<any, any, any>;
 };
 
-export const Call = ({ callData, navigation }: Props) => {
+
+
+export const SingleCall = ({ callData, navigation }: Props) => {
   const goToChatDetails = () => {};
 
   return (
-    <View style={styles.chat}>
+    <View style={styles.container}>
       <Image style={styles.chatImage} source={callData.callerImage} />
       <T onPress={goToChatDetails} style={styles.content}>
         <View>
@@ -43,17 +44,10 @@ export const Call = ({ callData, navigation }: Props) => {
   );
 };
 
-export type CallData = {
-  key: number;
-  status: string;
-  type: string;
-  caller: string;
-  callerImage: any;
-  time: string;
-};
+
 
 const styles = StyleSheet.create({
-  chat: {
+  container: {
     padding: 10,
     display: "flex",
     flexDirection: "row",
@@ -77,9 +71,5 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 998,
-  },
-  sendTime: {
-    textAlignVertical: "top",
-    fontSize: 10,
-  },
+  }
 });

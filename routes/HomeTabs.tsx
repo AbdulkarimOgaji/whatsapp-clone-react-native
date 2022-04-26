@@ -8,7 +8,7 @@ import Calls from "../screens/Calls"
 
 const Tab = createMaterialTopTabNavigator();
 
-const ChatTabs = () => {
+const HomeTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -46,4 +46,4 @@ const ChatTabs = () => {
   );
 };
 
-export default ChatTabs;
+export default HomeTabs;

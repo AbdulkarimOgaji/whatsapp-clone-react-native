@@ -8,11 +8,19 @@ import {
   TouchableOpacity as T,
 } from "react-native";
 import { globalStyle } from "../styles/global";
-import { Status, StatusData } from "./Status";
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParamList } from "../routes/HomeStack";
-import { MaterialIcons } from "@expo/vector-icons"
+import { MaterialIcons } from "@expo/vector-icons";
+import SingleStatus from "../components/SingleStatus";
 
+
+export type StatusType = {
+  key: number;
+  type: string;
+  author: string;
+  statusImage: any;
+  time: string;
+};
 
 type Props = StackScreenProps<RootStackParamList, "Chats">;
 
@@ -89,7 +97,7 @@ export default function Statuses({ navigation, route }: Props) {
       time: "8 minutes ago",
     },
   ];
-  const [statuses, setStatuses] = useState<StatusData[] | null>(demoStatuses);
+  const [statuses, setStatuses] = useState<StatusType[] | null>(demoStatuses);
   return (
     <View style={globalStyle.container}>
       <View style={styles.chat}>
@@ -111,21 +119,21 @@ export default function Statuses({ navigation, route }: Props) {
       {statuses
         ?.filter((status) => status.type === "RECENT")
         .map((status) => (
-          <Status status={status} key={status.key} navigation={navigation} />
+          <SingleStatus status={status} key={status.key} navigation={navigation} />
         ))}
       <Text>Viewed</Text>
 
       {statuses
         ?.filter((status) => status.type === "VIEWED")
         .map((status) => (
-          <Status status={status} key={status.key} navigation={navigation} />
+          <SingleStatus status={status} key={status.key} navigation={navigation} />
         ))}
       <Text>Muted</Text>
 
       {statuses
         ?.filter((status) => status.type === "MUTED")
         .map((status) => (
-          <Status status={status} key={status.key} navigation={navigation} />
+          <SingleStatus status={status} key={status.key} navigation={navigation} />
         ))}
       </ScrollView>
     </View>

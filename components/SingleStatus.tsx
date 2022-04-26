@@ -6,21 +6,20 @@ import {
   Image,
   TouchableOpacity as T,
 } from "react-native";
-import { globalStyle } from "../styles/global";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../routes/homeStack";
+import { StatusType } from '../screens/Statuses'
 
 type Props = {
-  status: StatusData;
-  navigation: StackNavigationProp<RootStackParamList, any, any>;
+  status: StatusType;
+  navigation: StackNavigationProp<any, any, any>;
 };
 
-export const Status = ({ status, navigation }: Props) => {
+const SingleStatus = ({ status, navigation }: Props) => {
   const goToStatusDetails = () => {
   };
 
   return (
-    <View style={styles.chat}>
+    <View style={styles.container}>
       <Image style={styles.statusImage} source={status.statusImage} />
       <T onPress={goToStatusDetails} style={styles.content}>
         <View>
@@ -34,16 +33,11 @@ export const Status = ({ status, navigation }: Props) => {
   );
 };
 
-export type StatusData = {
-  key: number;
-  type: string;
-  author: string;
-  statusImage: any;
-  time: string;
-};
+export default SingleStatus;
+
 
 const styles = StyleSheet.create({
-  chat: {
+  container: {
     padding: 10,
     display: "flex",
     flexDirection: "row",
