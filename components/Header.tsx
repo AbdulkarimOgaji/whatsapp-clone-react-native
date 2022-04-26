@@ -21,7 +21,7 @@ export const Header = ({ navigation }: { navigation: NavigationProp<any> }) => {
         <Button title="Back" onPress={goBack} />
       ) : (
         <>
-          <Text style={styles.headerText}>WhatsApp</Text>
+          <Text style={styles.headerText}>WhatsDown</Text>
           <View style={{flexDirection: 'row', marginTop: 20}}>
             <T>
               <MaterialIcons name="search" color="#eee" size={28} style={{marginEnd: 25}} />

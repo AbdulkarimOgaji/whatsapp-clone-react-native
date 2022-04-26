@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import { Chats, ChatDetails } from "../screens";
+import Chats from "../screens/Chats";
+
 
 export type RootStackParamList = {
   Chats: {};

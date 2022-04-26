@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import ChatTabs from "./ChatsTab";
 import { Header } from "../components/Header";
-import { ChatDetails } from "../screens";
+import ChatDetails from "../screens/ChatDetails";
 
 export type RootStackParamList = {
   ChatTabs: {};
@@ -18,7 +18,7 @@ const RootStack = () => {
         initialRouteName="ChatTabs"
         screenOptions={{
           header: ({ route, navigation }) => (
-            <Header navigation={navigation} route={route} />
+            <Header navigation={navigation} />
           ),
         }}
       >

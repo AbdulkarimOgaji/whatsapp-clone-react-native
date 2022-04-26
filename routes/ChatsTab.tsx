@@ -1,7 +1,9 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { Chats } from "../screens";
+import Chats from "../screens/Chats";
 import { MaterialIcons } from "@expo/vector-icons"
+import Statuses from "../screens/Statuses";
+import Calls from "../screens/Calls"
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -38,8 +40,8 @@ const ChatTabs = () => {
         }
       }}
       />
-      <Tab.Screen name="Status" component={Chats} />
-      <Tab.Screen name="Calls" component={Chats} />
+      <Tab.Screen name="Status" component={Statuses} />
+      <Tab.Screen name="Calls" component={Calls} />
     </Tab.Navigator>
   );
 };

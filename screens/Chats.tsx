@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList } from "react-native"
+import { View, FlatList } from "react-native"
 import { globalStyle } from '../styles/global';
 import {Chat, ChatData} from './Chat'
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParamList } from "../routes/HomeStack"
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 type Props = StackScreenProps<RootStackParamList, "Chats">;
 

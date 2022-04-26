@@ -6,45 +6,40 @@ import {
   Image,
   TouchableOpacity as T,
 } from "react-native";
+import { globalStyle } from "../styles/global";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../routes/homeStack";
 
 type Props = {
-  chatData: ChatData;
+  status: StatusData;
   navigation: StackNavigationProp<RootStackParamList, any, any>;
 };
 
-const Chat = ({ chatData, navigation }: Props) => {
-  const goToChatDetails = () => {
-    navigation.navigate("ChatDetails", {});
+export const Status = ({ status, navigation }: Props) => {
+  const goToStatusDetails = () => {
   };
 
   return (
     <View style={styles.chat}>
-      <Image style={styles.chatImage} source={chatData.chatImage} />
-      <T onPress={goToChatDetails} style={styles.content}>
+      <Image style={styles.statusImage} source={status.statusImage} />
+      <T onPress={goToStatusDetails} style={styles.content}>
         <View>
-          <Text style={styles.chatName}>{chatData.chatName}</Text>
+          <Text style={styles.chatName}>{status.author}</Text>
           <Text>
-            {chatData.lastMessage.sender}: {chatData.lastMessage.text}
+            {status.time}
           </Text>
         </View>
-        <Text style={styles.sendTime}>{chatData.lastMessage.sendTime}</Text>
       </T>
     </View>
   );
 };
 
-type ChatData = {
+export type StatusData = {
   key: number;
   type: string;
-  chatName: string;
-  chatImage: any;
-  lastMessage: {
-    text: string;
-    sender: string;
-    sendTime: string;
-  };
+  author: string;
+  statusImage: any;
+  time: string;
 };
 
 const styles = StyleSheet.create({
@@ -64,7 +59,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 14,
   },
-  chatImage: {
+  statusImage: {
     width: 50,
     height: 50,
     borderRadius: 998,
@@ -74,5 +69,3 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
 });
-
-export { Chat, ChatData}
