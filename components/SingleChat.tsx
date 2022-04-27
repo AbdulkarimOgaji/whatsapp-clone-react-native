@@ -8,15 +8,16 @@ import {
 } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ChatType } from '../screens/Chats'
+import { RootStackParamList } from "../routes/ContainerStack";
 
 type Props = {
   chatData: ChatType;
-  navigation: StackNavigationProp<any, any, any>;
+  navigation: StackNavigationProp<RootStackParamList, any, any>;
 };
 
 const SingleChat = ({ chatData, navigation }: Props) => {
   const goToChatDetails = () => {
-    navigation.navigate("ChatDetails", {});
+    navigation.navigate("ChatDetails", { chatName: chatData.chatName});
   };
 
   return (

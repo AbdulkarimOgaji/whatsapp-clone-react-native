@@ -15,12 +15,12 @@ const MainHeader = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const goBack = () => {
     navigation.goBack();
   };
-  const shouldHide = hideHeader.includes(currentPath)
+  const shouldHide = hideHeader.includes(currentPath.split('?')[0])
   return (
     <View style={shouldHide ? {height: 0} : styles.container}>
       { !shouldHide &&
         (<>
-          <Text style={styles.headerText}>WhatsDown</Text>
+          <Text style={styles.headerText}>WhatsLication</Text>
           <View style={{flexDirection: 'row', marginTop: 20}}>
             <T>
               <MaterialIcons name="search" color="#eee" size={28} style={{marginEnd: 25}} />

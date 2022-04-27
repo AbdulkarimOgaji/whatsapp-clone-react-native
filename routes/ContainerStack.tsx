@@ -7,7 +7,7 @@ import ChatDetails from "../screens/ChatDetails";
 
 export type RootStackParamList = {
   ChatTabs: {};
-  ChatDetails: {};
+  ChatDetails: { chatName: string};
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -17,8 +17,8 @@ const RootStack = () => {
       <Stack.Navigator
         initialRouteName="ChatTabs"
         screenOptions={{
-          header: ({ navigation }) => (
-            <MainHeader navigation={navigation} />
+          header: ({ navigation}) => (
+            <MainHeader navigation={navigation}/>
           ),
         }}
       >
