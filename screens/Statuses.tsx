@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { globalStyle } from "../styles/global";
 import { StackScreenProps } from "@react-navigation/stack";
-import { RootStackParamList } from "../routes/HomeStack";
+import { RootStackParamList } from "../routes/ContainerStack";
 import { MaterialIcons } from "@expo/vector-icons";
 import SingleStatus from "../components/SingleStatus";
 
@@ -22,14 +22,14 @@ export type StatusType = {
   time: string;
 };
 
-type Props = StackScreenProps<RootStackParamList, "Chats">;
+type Props = StackScreenProps<RootStackParamList, any>;
 
 export default function Statuses({ navigation, route }: Props) {
   const demoStatuses = [
     {
       key: 0,
       type: "RECENT",
-      author: "Dad",
+      author: "Mum",
       statusImage: require("../assets/icon.png"),
       time: "8 minutes ago",
     },
@@ -119,21 +119,21 @@ export default function Statuses({ navigation, route }: Props) {
       {statuses
         ?.filter((status) => status.type === "RECENT")
         .map((status) => (
-          <SingleStatus status={status} key={status.key} navigation={navigation} />
+          <SingleStatus status={status} key={status.key} navigation={navigation} setStatus={setStatuses} />
         ))}
       <Text>Viewed</Text>
 
       {statuses
         ?.filter((status) => status.type === "VIEWED")
         .map((status) => (
-          <SingleStatus status={status} key={status.key} navigation={navigation} />
+          <SingleStatus status={status} key={status.key} navigation={navigation} setStatus={setStatuses}/>
         ))}
       <Text>Muted</Text>
 
       {statuses
         ?.filter((status) => status.type === "MUTED")
         .map((status) => (
-          <SingleStatus status={status} key={status.key} navigation={navigation} />
+          <SingleStatus status={status} key={status.key} navigation={navigation} setStatus={setStatuses}/>
         ))}
       </ScrollView>
     </View>
