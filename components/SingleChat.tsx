@@ -9,11 +9,38 @@ import {
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ChatType } from '../screens/Chats'
 import { RootStackParamList } from "../routes/ContainerStack";
+import * as FileSystem from 'expo-file-system'
+import * as MediaLibrary from 'expo-media-library';
 
 type Props = {
   chatData: ChatType;
   navigation: StackNavigationProp<RootStackParamList, any, any>;
 };
+
+// const getFileFromPhone = async() => {
+//   console.log(FileSystem.documentDirectory);
+//   const dir = FileSystem.documentDirectory + "TextFile.txt"
+//   const res = await FileSystem.getInfoAsync(dir, {md5: true, size: true})
+//   console.log(res);
+// }
+
+// const saveFileToPhone = async() => {
+//   const status = await MediaLibrary.requestPermissionsAsync()
+//   if (status.granted) {
+//     const cwd = FileSystem.documentDirectory
+//     const saveFile = cwd + "TestFile.txt"
+//     const saveFile2 = cwd + "TestFile2.txt"
+
+//     await FileSystem.writeAsStringAsync(saveFile, "This is the test file", { encoding: FileSystem.EncodingType.UTF8 })
+//     await FileSystem.writeAsStringAsync(saveFile2, "This is the test file", { encoding: FileSystem.EncodingType.UTF8 })
+//     console.log("Writing file")
+//     const asset = await MediaLibrary.createAssetAsync(saveFile)
+//     const asset2 = await MediaLibrary.createAssetAsync(saveFile2)
+//     await MediaLibrary.createAlbumAsync("myDownloads", asset, false)
+//     await MediaLibrary.createAlbumAsync("myDownloads", asset2, false)
+//   }
+  
+// }
 
 const SingleChat = ({ chatData, navigation }: Props) => {
   const goToChatDetails = () => {

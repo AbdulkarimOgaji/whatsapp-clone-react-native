@@ -1,5 +1,6 @@
 {
   "expo": {
+    
     "name": "native",
     "slug": "native",
     "version": "1.0.0",
@@ -27,6 +28,16 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow WhatsLication to access your photos.",
+          "savePhotosPermission": "Allow WhatsLication to save photos.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ]
+    ]
   }
 }

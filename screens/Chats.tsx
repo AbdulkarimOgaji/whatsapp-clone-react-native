@@ -3,8 +3,9 @@ import { View, FlatList } from "react-native"
 import { globalStyle } from '../styles/global';
 import { StackScreenProps } from "@react-navigation/stack";
 import SingleChat from '../components/SingleChat';
+import { RootStackParamList } from '../routes/ContainerStack';
 
-type Props = StackScreenProps<any, any>;
+type Props = StackScreenProps<RootStackParamList, any>;
 
 export type ChatType = {
   key: number;
